@@ -61,12 +61,70 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
 .footer { background: #060a10; border-top: 2px solid #1e3048; padding: 1rem; text-align: center; }
 .footer p { font-size: 10px; color: #2a3a4a; letter-spacing: 2px; margin-top: 4px; }
 .footer .url { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 3px; color: #00aaff; }
+
+/* Nuevos efectos añadidos */
+.glitch { position: relative; display: inline-block; animation: glitch-skew 1s infinite linear alternate-reverse; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0a0e14; }
+.glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
+.glitch::after { left: -2px; text-shadow: -2px 0 #00fff9; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
+
+@keyframes glitch-anim {
+  0% { clip: rect(13px, 9999px, 52px, 0); }
+  20% { clip: rect(62px, 9999px, 49px, 0); }
+  40% { clip: rect(80px, 9999px, 56px, 0); }
+  60% { clip: rect(83px, 9999px, 90px, 0); }
+  80% { clip: rect(100px, 9999px, 1px, 0); }
+  100% { clip: rect(6px, 9999px, 58px, 0); }
+}
+@keyframes glitch-anim2 {
+  0% { clip: rect(44px, 9999px, 7px, 0); }
+  20% { clip: rect(10px, 9999px, 34px, 0); }
+  40% { clip: rect(3px, 9999px, 41px, 0); }
+  60% { clip: rect(32px, 9999px, 78px, 0); }
+  80% { clip: rect(14px, 9999px, 33px, 0); }
+  100% { clip: rect(82px, 9999px, 50px, 0); }
+}
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  10% { transform: skew(-5deg); }
+  20% { transform: skew(0deg); }
+  30% { transform: skew(2deg); }
+  40% { transform: skew(0deg); }
+  50% { transform: skew(-1deg); }
+  60% { transform: skew(0deg); }
+  70% { transform: skew(4deg); }
+  80% { transform: skew(0deg); }
+  90% { transform: skew(-3deg); }
+  100% { transform: skew(0deg); }
+}
+
+.shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite; transform: translate3d(0, 0, 0); backface-visibility: hidden; perspective: 1000px; }
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
 
 <div class="scanline-bar">
-  <span>SISTEMA CLASIFICADO // ACCESO RESTRINGIDO</span>
+  <span class="shake">SISTEMA CLASIFICADO // ACCESO RESTRINGIDO</span>
   <span class="blink">[ EN LINEA ]</span>
   <span>REF: TCB-2026-001</span>
 </div>
@@ -88,8 +146,8 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
       <text x="28" y="40" text-anchor="middle" font-family="Oswald,sans-serif" font-size="7" fill="#cc0000">FANTASY</text>
     </svg>
   </div>
-  <div class="classification">TOP SECRET</div>
-  <div class="doc-title">EXPEDIENTE CRIMINAL: SUJETO "BUEIS"</div>
+  <div class="classification shake">TOP SECRET</div>
+  <div class="doc-title glitch" data-text="EXPEDIENTE CRIMINAL: SUJETO &quot;BUEIS&quot;">EXPEDIENTE CRIMINAL: SUJETO "BUEIS"</div>
   <div class="doc-ref">DOC. REF: TCB-2026-0042 // NIVEL DE AMENAZA: CRITICO // ACTIVO</div>
 </div>
 
@@ -200,20 +258,20 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
           <div class="crime-status">ESTADO: DANO IRREVERSIBLE // VICTIMA IDENTIFICADA</div>
         </div>
       </div>
-      <div class="redacted-block">
-        <div class="redacted-num">05</div>
-        <div class="redacted-body">
-          <div class="redacted-bar" style="width:80%"></div>
-          <div class="redacted-bar" style="width:55%"></div>
-          <div class="redacted-note">// CONTENIDO OMITIDO POR RESPETO — CLASIFICADO NIVEL OMEGA</div>
+      <div class="crime-row">
+        <div class="crime-num">05</div>
+        <div class="crime-body">
+          <div class="crime-title glitch" data-text="TERRORISMO PSICOLOGICO EN WHATSAPP">TERRORISMO PSICOLOGICO EN WHATSAPP</div>
+          <div class="crime-desc">Envio masivo de quejas, excusas baratas y predicciones catastrofistas en el grupo de WhatsApp despues de un Clausulazo en su contra. Genera desmoralizacion general.</div>
+          <div class="crime-status">ESTADO: INAGUANTABLE // SILENCIADO POR MUCHOS</div>
         </div>
       </div>
-      <div class="redacted-block">
-        <div class="redacted-num">06</div>
-        <div class="redacted-body">
-          <div class="redacted-bar" style="width:70%"></div>
-          <div class="redacted-bar" style="width:40%"></div>
-          <div class="redacted-note">// CONTENIDO OMITIDO POR RESPETO — CLASIFICADO NIVEL OMEGA</div>
+      <div class="crime-row">
+        <div class="crime-num">06</div>
+        <div class="crime-body">
+          <div class="crime-title glitch" data-text="LLORIQUEO TACTICO POST-PARTIDO">LLORIQUEO TACTICO POST-PARTIDO</div>
+          <div class="crime-desc">Llorar sistematicamente tras cada jornada, fingiendo tener el peor equipo para dar pena y evitar clausulazos. Actuacion digna de un Oscar.</div>
+          <div class="crime-status">ESTADO: PATETICO // FALTA DE DIGNIDAD DETECTADA</div>
         </div>
       </div>
       <div class="redacted-block">
@@ -236,6 +294,17 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
       <div class="stat-box"><div class="stat-num red">1</div><div class="stat-label">PABLO CORROMPIDO</div></div>
       <div class="stat-box"><div class="stat-num">0%</div><div class="stat-label">ARREPENTIMIENTO</div></div>
     </div>
+  </div>
+
+  <div class="boicot shake" style="margin-bottom: 2rem; border: 2px dashed #e8a020; background: #1a1a00;">
+    <h2 style="color: #e8a020; text-shadow: 0 0 5px #e8a020;">&#9888; SE BUSCA VIVO O LLORANDO &#9888;</h2>
+    <p style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">RECOMPENSA DE CAPTURA (O EXILIO DEL GRUPO):</p>
+    <div style="font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; color: #00aaff; margin-bottom: 15px;">
+      <span class="glitch" data-text="50.000 MONEDAS DEL FANTASY">50.000 MONEDAS DEL FANTASY</span><br>
+      <span style="font-size: 1rem; color: #ccc;">+ UNA REGLETA NUEVA (CON GARANTÍA)</span><br>
+      <span style="font-size: 1rem; color: #ccc;">+ 1 PAQUETE DE PAÑUELOS PARA SUS LLOROS</span>
+    </div>
+    <p style="font-size: 0.9rem; color: #e8a020;">NO INTENTAR NEGOCIAR CLÁUSULAS CON ÉL. ESTÁ ARMADO CON EXCUSAS Y ES EXTREMADAMENTE PESADO.</p>
   </div>
 
   <div class="boicot">
