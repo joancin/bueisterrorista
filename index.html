@@ -61,6 +61,14 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
 .footer { background: #060a10; border-top: 2px solid #1e3048; padding: 1rem; text-align: center; }
 .footer p { font-size: 10px; color: #2a3a4a; letter-spacing: 2px; margin-top: 4px; }
 .footer .url { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 3px; color: #00aaff; }
+
+/* Nuevos estilos */
+.btn-evidence { background: #0d1520; color: #e8a020; border: 1px solid #e8a020; padding: 8px 16px; font-family: 'Share Tech Mono', monospace; font-size: 12px; cursor: pointer; transition: background 0.2s; letter-spacing: 1px; }
+.btn-evidence:hover { background: #e8a020; color: #0a0e14; }
+
+#btn-denunciar:hover {
+  box-shadow: 0 0 10px #cc0000;
+}
 </style>
 </head>
 <body>
@@ -131,6 +139,10 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
           <div>ESTADO: <span class="val" style="color:#cc0000">PRUEBA IRREFUTABLE</span></div>
         </div>
       </div>
+    </div>
+
+    <div style="margin-top: 15px; text-align: center;">
+      <button class="btn-evidence" id="btn-audio">► REPRODUCIR EVIDENCIA DE AUDIO INTERCEPTADA</button>
     </div>
   </div>
 
@@ -247,6 +259,9 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
       <div class="bstep"><div class="bstep-n">4</div><span>Exige la devolucion de la regleta a las autoridades universitarias</span></div>
       <div class="bstep"><div class="bstep-n">5</div><span>Difunde este expediente — la informacion es poder</span></div>
     </div>
+    <div style="margin-top: 2rem; position: relative; height: 60px;">
+      <button id="btn-denunciar" style="position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Oswald', sans-serif; font-size: 1.2rem; padding: 10px 20px; background: #0a0e14; color: #cc0000; border: 2px solid #cc0000; cursor: pointer; transition: all 0.1s; white-space: nowrap;">🚨 DENUNCIAR A BUEIS AHORA 🚨</button>
+    </div>
   </div>
 
   <div class="footer">
@@ -256,5 +271,29 @@ body { background: #0a0e14; color: #c8d8e8; font-family: 'Share Tech Mono', mono
   </div>
 
 </div>
+
+<script>
+  document.getElementById('btn-audio').addEventListener('click', function() {
+    alert("ERROR 404: Archivo de audio corrompido por Bueis para ocultar evidencias.\n\nSujeto extremadamente peligroso.");
+  });
+
+  const btnDenunciar = document.getElementById('btn-denunciar');
+  btnDenunciar.addEventListener('mouseover', function() {
+    const parentWidth = this.parentElement.offsetWidth;
+    const parentHeight = this.parentElement.offsetHeight;
+
+    // Generar coordenadas aleatorias dentro del contenedor padre
+    const newX = Math.random() * (parentWidth - this.offsetWidth);
+    const newY = (Math.random() * 40) - 20; // pequeño salto en Y
+
+    this.style.transform = `none`;
+    this.style.left = `${newX}px`;
+    this.style.top = `${newY}px`;
+  });
+
+  btnDenunciar.addEventListener('click', function() {
+    alert("¡Error del sistema! El formulario de denuncia ha sido bloqueado por un hacker anónimo (posiblemente Bueis).");
+  });
+</script>
 </body>
 </html>
